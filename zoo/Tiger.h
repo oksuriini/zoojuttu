@@ -9,7 +9,7 @@ public:
     Tiger(string name = "Woods", Date birth = Date(), double weight = 150, string species = "Indian");
     string getSpecies() { return species; }
     void setSpecies(string species) { this->species = species; }
-    string toString() { return Animal::toString() + " Tiger species: " + species; }
+    string toString() { return Animal::toString() + " Tiger species: " + species + "\n"; }
     void move();
     void utter();
 };

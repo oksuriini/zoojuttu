@@ -10,7 +10,7 @@ Shark::Shark(string name, Date birth, double weight, string species)
 
 void Shark::move()
 {
-	printf("Swoosh swoosh swoosh");
+	printf("Swoosh swoosh swoosh\n");
 }
 
 void Shark::utter()

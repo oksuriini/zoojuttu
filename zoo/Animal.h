@@ -16,8 +16,8 @@ public:
 	void setBirth(Date birth) { this->birth = birth; }
 	double getWeight() { return weight; }
 	void setWeight(double weight) { this->weight = weight; }
-	virtual string toString() { return name + " birth: " + birth.toString() + " weight: " + to_string(weight) + "\n"; }
-	virtual void move() = 0;	// "=0" --> pure virtual --> no definition --> the class Animal is abstract
+	virtual string toString() { return name + " birth: " + birth.toString() + " weight: " + to_string(weight) +"kg"; }
+	virtual void move() = 0;
 	virtual void utter() = 0;
 	virtual ~Animal();
 };

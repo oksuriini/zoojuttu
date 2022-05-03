@@ -9,7 +9,7 @@ public:
     Shark(string name = "Jaws", Date birth = Date(), double weight = 150, string species = "GreatWhite");
     string getSpecies() { return species; }
     void setSpecies(string species) { this->species = species; }
-    string toString() { return Animal::toString() + " Shark species: " + species; }
+    string toString() { return Animal::toString() + " Shark species: " + species + "\n"; }
     void move();
     void utter();
 };

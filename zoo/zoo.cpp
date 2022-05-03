@@ -14,14 +14,15 @@ int main()
     Zoo elaimet;
     Date syntyma = NULL;
     int x = 0;
-    while(x != 6){
+    while(x != 7){
     std::cout << "Zoo functions: \n";
     std::cout << "1 - Add Tiger\n";
     std::cout << "2 - Add Shark\n";
     std::cout << "3 - Print all animals in the Zoo by their name\n";
     std::cout << "4 - Print all animals in the Zoo by their age\n";
     std::cout << "5 - Remove animal from Zoo by name\n";
-    std::cout << "6 - Quit Zoo\n";
+    std::cout << "6 - Make all animals move and utter\n";
+    std::cout << "7 - Exit\n";
 
     std::cin >> x;
 
@@ -51,8 +52,7 @@ int main()
             std::cout << "\nGive the species of Tiger: ";
             string species;
             std::cin >> species;
-            Tiger tikru(name, syntyma, weight, species);
-            elaimet.add(&tikru);
+            elaimet.add(new Tiger(name,syntyma,weight,species));
             break;
         }
         else if (x == 2) {
@@ -65,12 +65,10 @@ int main()
             std::cout << "\nGive the species of Shark: ";
             string species;
             std::cin >> species;
-            Shark hai(name, syntyma, weight, species);
-            elaimet.add(&hai);
+            elaimet.add(new Shark(name, syntyma, weight, species));
             break;
         }
     case 3:
-    
         elaimet.printSortedByName();
         break;
     }
@@ -87,26 +85,15 @@ int main()
         elaimet.remove(name);
         break;
     }
+    case 6:
+    {
+        elaimet.print();
+        break;
+    }
     default:
         break;
     }
-
     }
-
-    /*Date syntyma(12, 2, 2012);
-    Shark hai("Jaska", syntyma , 125, "HuiHai");
-
-    Date syntyma3(3, 5, 1999);
-    Tiger tikru2("Jotain", syntyma3, 166, "Villisika");
-    
-    Date syntyma2(16, 5, 2007);
-    Tiger tikru("Niilo22", syntyma2, 222, "bengalintiikeri"); // :D Mee töihi xDD
-    // melkonen köriläs ku painavempi ku hai. Se on vaan laiha hai
-    Zoo elaimet;
-    elaimet.add(&hai);
-    elaimet.add(&tikru);
-    elaimet.add(&tikru2);
-    elaimet.printSortedByAge();*/
 }
 
 Animal* Zoo::add(Animal* a)
@@ -132,14 +119,14 @@ Animal* Zoo::remove(string name)
 void Zoo::print()
 {
     for (const auto& key : animals) {
-        std::cout << key.first << " " << key.second->toString() << std::endl;
+        std::cout << key.first << " goes: "; key.second->utter(); std::cout << " and moves: "; key.second->move();
     }
 }
 
 void Zoo::printSortedByName()
 {
     for (const auto& key : animals) {
-        std::cout << key.first << " " << key.second->toString();
+        std::cout << key.second->toString();
     }//Tää ja print periaatteessa samat niin emt kai näin?
 }
 
@@ -151,13 +138,15 @@ void Zoo::printSortedByAge()
         agesorted[date.getY()] = key.second;
     }
     for (const auto& avain : agesorted) {
-        std::cout << avain.first << " " << avain.second->toString();
+        std::cout << avain.second->toString();
     }
     agesorted.clear();
 }
 
 Zoo::~Zoo()
 {
-    // delete all existing Animal objects!
-
+    for (const auto& key : animals) {
+        std::cout << key.first << " deleted" << endl;
+    }
+    // delete all existing Animal objects!   
 }

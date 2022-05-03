@@ -48,9 +48,7 @@ bool Date::checkValues(int d, int m, int y)
     Jos on = on validi.
     Muuten -> ei ole
     */
-    // Liian pitkiä vai :D    ju :D
     // tarkastetaan onko kuukausi välillä 1 - 12
-    // ei vissii tarvi olla {} jos on vaa return jotain
     const int max_kk = 12;
     const int min_kk = 1;
     if (m < min_kk || m > max_kk) {

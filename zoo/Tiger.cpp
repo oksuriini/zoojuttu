@@ -10,7 +10,7 @@ Tiger::Tiger(string name, Date birth, double weight, string species)
 
 void Tiger::move()
 {
-	printf("Stomp stomp stomp");
+	printf("Stomp stomp stomp\n");
 }
 
 void Tiger::utter()
